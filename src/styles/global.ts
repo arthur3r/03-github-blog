@@ -28,4 +28,24 @@ export const GlobalStyle = createGlobalStyle`
   button {
     cursor: pointer;
   }
+
+  ::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: ${({ theme }) => theme['base-subtitle']};
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: ${({ theme }) => theme.blue};
+    border-radius: 10px;
+
+    &:hover {
+      background: rgba(50, 148, 248, 0.5);
+    }
+  }
+
 `
