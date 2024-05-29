@@ -21,7 +21,11 @@ export function Profile() {
         <section>
           <ProfileHeader>
             <h2>Arthur Freire Ribeiro</h2>
-            <a href="https://github.com/arthur3r">
+            <a
+              href="https://github.com/arthur3r"
+              target="_blank"
+              rel="noreferrer"
+            >
               github
               <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
             </a>
