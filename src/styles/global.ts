@@ -9,7 +9,7 @@ export const GlobalStyle = createGlobalStyle`
 
   :focus {
     outline: none;
-    box-shadow: 0 0 0 3px ${({ theme }) => theme.blue};
+    box-shadow: 0 0 0 2px ${({ theme }) => theme.blue};
     border-radius: 4px;
   }
 
