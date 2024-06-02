@@ -22,6 +22,10 @@ export const ProfileContent = styled.div`
     border-radius: 8px;
   }
 
+  section {
+    width: 100%;
+  }
+
   p {
     margin: 0.5rem 0 1.5rem;
   }
