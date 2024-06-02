@@ -11,6 +11,7 @@ import {
   ProfileFooter,
   ProfileHeader,
 } from './styles'
+import { LinkNavigator } from '../../../../components/LinkNavigator'
 
 export function Profile() {
   return (
@@ -21,14 +22,10 @@ export function Profile() {
         <section>
           <ProfileHeader>
             <h2>Arthur Freire Ribeiro</h2>
-            <a
-              href="https://github.com/arthur3r"
-              target="_blank"
-              rel="noreferrer"
-            >
+            <LinkNavigator type="link" to="https://github.com/arthur3r">
               github
               <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
-            </a>
+            </LinkNavigator>
           </ProfileHeader>
           <p>
             Tristique volutpat pulvinar vel massa, pellentesque egestas. Eu

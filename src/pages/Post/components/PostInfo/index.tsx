@@ -7,19 +7,20 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 import { PostInfoContainer, PostInfoLinks, PostInfoDetails } from './styles'
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
+import { LinkNavigator } from '../../../../components/LinkNavigator'
 
 export function PostInfo() {
   return (
     <PostInfoContainer>
       <PostInfoLinks>
-        <a href="/">
+        <LinkNavigator type="navigate" to="/">
           <FontAwesomeIcon icon={faChevronLeft} />
           voltar
-        </a>
-        <a href="https://github.com/arthur3r" target="_blank" rel="noreferrer">
+        </LinkNavigator>
+        <LinkNavigator type="link" to="https://github.com/arthur3r">
           ver no github
           <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
-        </a>
+        </LinkNavigator>
       </PostInfoLinks>
 
       <h1>JavaScript data types and data structures</h1>
