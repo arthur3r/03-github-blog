@@ -1,6 +1,7 @@
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
-export const PostCardContainer = styled.div`
+export const PostCardContainer = styled(Link)`
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -9,6 +10,8 @@ export const PostCardContainer = styled.div`
   padding: 2rem;
   height: 16.25rem;
   border: 2px solid transparent;
+  text-decoration: none;
+  color: ${({ theme }) => theme['base-text']};
 
   &:hover {
     border-color: ${({ theme }) => theme['base-label']};
