@@ -8,8 +8,20 @@ import {
 import { PostInfoContainer, PostInfoLinks, PostInfoDetails } from './styles'
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
 import { LinkNavigator } from '../../../../components/LinkNavigator'
+import { Issue } from '../../../../contexts/IssuesContext'
+import { formatDistanceToNow } from 'date-fns'
+import { ptBR } from 'date-fns/locale/pt-BR'
 
-export function PostInfo() {
+interface PostInfoProps {
+  issue: Issue
+}
+
+export function PostInfo({ issue }: PostInfoProps) {
+  const formattedDate = formatDistanceToNow(new Date(issue.created_at), {
+    locale: ptBR,
+    addSuffix: true,
+  })
+
   return (
     <PostInfoContainer>
       <PostInfoLinks>
@@ -17,28 +29,28 @@ export function PostInfo() {
           <FontAwesomeIcon icon={faChevronLeft} />
           voltar
         </LinkNavigator>
-        <LinkNavigator type="link" to="https://github.com/arthur3r">
+        <LinkNavigator type="link" to={issue.html_url}>
           ver no github
           <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
         </LinkNavigator>
       </PostInfoLinks>
 
-      <h1>JavaScript data types and data structures</h1>
+      <h1>{issue.title}</h1>
 
       <PostInfoDetails>
         <div className="item">
           <FontAwesomeIcon icon={faGithub} />
-          <span>arthur3r</span>
+          <span>{issue.user.login}</span>
         </div>
 
         <div className="item">
           <FontAwesomeIcon icon={faCalendarDay} />
-          <span>Há 1 dia</span>
+          <span>{formattedDate}</span>
         </div>
 
         <div className="item">
           <FontAwesomeIcon icon={faComment} />
-          <span>5 comentários</span>
+          <span>{issue.comments} comentários</span>
         </div>
       </PostInfoDetails>
     </PostInfoContainer>
