@@ -6,7 +6,7 @@ export interface Issue {
   id: number
   title: string
   body: string
-  created_at: Date
+  created_at: string
   comments: number
   html_url: string
   number: number
@@ -17,8 +17,10 @@ export interface Issue {
 
 interface IssuesContextProps {
   issues: Issue[]
+  issueDataDetails: Issue
   isLoading: boolean
   fetchIssues: (query?: string) => Promise<void>
+  fetchIssueDataDetails: (query?: string) => Promise<void>
 }
 
 export const IssuesContext = createContext({} as IssuesContextProps)
@@ -31,7 +33,8 @@ export function IssuesContextProvider({
   children,
 }: IssuesContextProviderProps) {
   const [issues, setIssues] = useState<Issue[]>([])
-  const [isLoading, setIsLoading] = useState(false)
+  const [issueDataDetails, setIssueDataDetails] = useState<Issue>({} as Issue)
+  const [isLoading, setIsLoading] = useState(true)
 
   const fetchIssues = useCallback(async (query?: string) => {
     try {
@@ -60,6 +63,24 @@ export function IssuesContextProvider({
     }
   }, [])
 
+  const fetchIssueDataDetails = useCallback(async (number?: string) => {
+    try {
+      setIsLoading(true)
+
+      if (!number) return
+
+      const response = await api.get(
+        `/repos/arthur3r/posts-blog/issues/${number}`,
+      )
+
+      setIssueDataDetails(response.data)
+    } catch (error) {
+      console.log(error)
+    } finally {
+      setIsLoading(false)
+    }
+  }, [])
+
   useEffect(() => {
     fetchIssues()
   }, [fetchIssues])
@@ -68,7 +89,9 @@ export function IssuesContextProvider({
     <IssuesContext.Provider
       value={{
         issues,
+        issueDataDetails,
         fetchIssues,
+        fetchIssueDataDetails,
         isLoading,
       }}
     >
